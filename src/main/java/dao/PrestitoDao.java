@@ -1,12 +1,15 @@
 package dao;
 
 import entities.Prestito;
-import entities.Utente;
 import jakarta.persistence.EntityManager;
 
 public class PrestitoDao {
 
     private EntityManager em;
+
+    public PrestitoDao(EntityManager em) {
+        this.em = em;
+    }
 
     public void save (Prestito p) {
         em.getTransaction().begin();

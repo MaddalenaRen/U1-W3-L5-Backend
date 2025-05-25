@@ -11,6 +11,10 @@ public class Libro extends Consultabile {
     private String autore;
     private String genere;
 
+    public Libro() {
+        super();
+    }
+
     public Libro(String isbn, String titolo, int anno, int pagine, String autore, String genere) {
         super(isbn, titolo, anno, pagine);
         this.autore = autore;

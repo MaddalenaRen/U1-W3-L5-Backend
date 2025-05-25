@@ -41,24 +41,26 @@ public class ArchivioDao {
 
     }
     public List<Consultabile> ricercaPerTitolo (String titolo){
-        return em.createQuery("SELECT c FROM Consultabile c WHERE c.titolo LIKE '%:titolo%'", Consultabile.class)
+        return em.createQuery("SELECT c FROM Consultabile c WHERE LOWER(c.titolo) LIKE LOWER(CONCAT('%', :titolo, '%'))", Consultabile.class)
                 .setParameter("titolo", titolo)
                 .getResultList();
 
     }
 
-    public List<Consultabile> elementiInPrestito (int numeroTessera){
-        return em.createQuery("SELECT c FROM Consultabile c" +
-                        " INNER JOIN Prestito p ON p.elementoPrestato = c.isbn " +
-                        " WHERE p.utente = :numeroTessera", Consultabile.class)
+    public List<Consultabile> elementiInPrestito(int numeroTessera){
+        return em.createQuery(
+                        "SELECT p.elementoPrestato FROM Prestito p WHERE p.utente.numeroTessera = :numeroTessera",
+                        Consultabile.class
+                )
                 .setParameter("numeroTessera", numeroTessera)
                 .getResultList();
     }
 
     public List<Prestito> prestitiScaduti(){
-        return em.createQuery("SELECT p FROM Prestito p WHERE p.data_di_effettiva_restituzione is null AND p.dataStimataDiRestituzione < CURRENT_DATE",Prestito.class)
-                .setParameter("prestitiScaduti", prestitiScaduti())
-                .getResultList();
+        return em.createQuery(
+                "SELECT p FROM Prestito p WHERE p.dataDiEffettivaRestituzione IS NULL AND p.dataStimataDiRestituzione < CURRENT_DATE",
+                Prestito.class
+        ).getResultList();
     }
 
 

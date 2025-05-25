@@ -13,7 +13,9 @@ public class Rivista extends Consultabile{
     @Enumerated(EnumType.STRING)
     private Periodicita periodicita;
 
-
+    public Rivista() {
+        super();
+    }
 
     public Rivista(String isbn, String titolo, int anno, int pagine, Periodicita periodicita) {
         super(isbn, titolo, anno, pagine);
