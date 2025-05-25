@@ -17,7 +17,6 @@ public class Prestito {
     @ManyToOne
     @JoinColumn(name = "consultabile_isbn", nullable = false)
     private Consultabile elementoPrestato;
-
     @Column(name = "data_inizio_prestito")
     private LocalDate dataInizioPrestito;
 
