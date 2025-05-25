@@ -46,7 +46,7 @@ public class UtenteDao {
         }
     }
 
-    public Utente findByNumetoTessera(int numeroTessera) {
+    public Utente findByNumeroTessera(int numeroTessera) {
         try {
             return em.createQuery("SELECT u FROM Utente u WHERE u.numeroTessera = :num", Utente.class)
                     .setParameter("num", numeroTessera)
