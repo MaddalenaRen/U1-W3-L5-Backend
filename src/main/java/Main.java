@@ -30,7 +30,7 @@ public class Main {
         PrestitoDao prestitoDao = new PrestitoDao(entityManager);
 
 
-/*
+
         Libro libro1 = new Libro("123ABC", "Il Signore degli Anelli", 1954, 1000, "J.R.R. Tolkien", "Fantasy");
         Libro libro2 = new Libro("456DEF", "Harry Potter", 1997,332,"J.K. Rowling", "Fantasy");
 
@@ -59,7 +59,7 @@ public class Main {
         prestitoDao.save(p2);
         prestitoDao.save(p3);
 
-*/
+
 
         System.out.println("--- Ricerca per titolo 'Harry' ---");
         archivioDao.ricercaPerTitolo("Harry").forEach(System.out::println);
