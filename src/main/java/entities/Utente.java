@@ -17,7 +17,7 @@ public class Utente {
     @Column(name = "data_di_nascita")
     private LocalDate dataNascita;
 
-    @OneToMany(mappedBy = "utente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "utente")
     private List<Prestito> prestiti;
 
 
@@ -30,7 +30,7 @@ public class Utente {
         this.numeroTessera = numeroTessera;
     }
 
-    
+
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
 
